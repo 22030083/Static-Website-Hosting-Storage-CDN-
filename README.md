@@ -1,8 +1,10 @@
+
+
 # 🌩️ AWS Static Website Hosting Project (S3 + CloudFront)
 
 ## ☁️ Overview
 
-This project demonstrates how to **host a static website (HTML, CSS, images)** on **Amazon S3**, with optional integration of **Amazon CloudFront** for **HTTPS** and **global content delivery (CDN)**.
+This project demonstrates how to **host a static website (HTML, CSS, images)** on **Amazon S3**, with optional **Amazon CloudFront** for **HTTPS** and **global content delivery (CDN)**.
 
 ---
 
@@ -11,15 +13,14 @@ This project demonstrates how to **host a static website (HTML, CSS, images)** o
 Host a **secure, globally available static website** on AWS for **free** using:
 
 - 🪣 **Amazon S3** → store and host website files  
-- ⚡ **Amazon CloudFront** → global CDN + free HTTPS (SSL)  
+- ⚡ **Amazon CloudFront** → CDN + free HTTPS (SSL)  
 - 🚫 **No Route 53 / no paid domain** → use free CloudFront URL  
 
 **Architecture:**
 
+
 User → CloudFront (CDN + HTTPS) → S3 (Website files)
 
-yaml
-Copy code
 
 ---
 
@@ -27,38 +28,38 @@ Copy code
 
 ### ✅ Option 1: Only S3 (Simple, HTTP)
 
-Use **only Amazon S3** for static website hosting.
+Use **only S3** for website hosting.
 
 **Example URL:**
+
+
 http://mywebsite-demo-2025.s3-website-ap-south-1.amazonaws.com
 
-yaml
-Copy code
 
-**Pros:**
-- 🟢 Free and simple  
-- 🟢 Perfect for learning or small projects  
+**Pros:**  
+- 🟢 Simple & free  
+- 🟢 Great for learning  
 
-**Cons:**
-- ❌ No HTTPS (browser shows “Not Secure”)  
-- 🐢 Slightly slower (served from one AWS region)
+**Cons:**  
+- ❌ No HTTPS (Not Secure)  
+- 🐢 Slightly slower from one AWS region
 
 ---
 
 ### ✅ Option 2: S3 + CloudFront (HTTP + HTTPS)
 
-Add **CloudFront (CDN)** in front of your S3 bucket for better performance and security.
+Add **CloudFront (CDN)** for better performance and security.
 
 **Example URL:**
+
+
 https://d1234abcd.cloudfront.net
 
-php-template
-Copy code
 
 **Benefits:**
-- 🌍 Global caching (faster load times)
-- 🔒 Free HTTPS (SSL certificate)
-- ⚔️ DDoS protection and traffic management
+- 🌍 Global caching (faster load times)  
+- 🔒 Free HTTPS (SSL certificate)  
+- ⚔️ DDoS protection & scaling  
 
 ---
 
@@ -66,34 +67,36 @@ Copy code
 
 | Feature | AWS Service | Cost |
 |----------|--------------|------|
-| Website files | Amazon S3 | ✅ Free up to 5GB |
-| HTTPS / CDN | Amazon CloudFront | ✅ Free up to 1TB/month |
+| Website files | Amazon S3 | ✅ Free (5GB) |
+| HTTPS / CDN | CloudFront | ✅ Free (1TB/month) |
 | Custom Domain | Route 53 | ❌ Paid (optional) |
 
-> 💡 Stay within free tier limits → **No charges for 12 months**
+💡 **Stay within free tier → No charges for 12 months**
 
 ---
 
 ## 🧱 Step-by-Step Implementation
 
 ### 🪣 Step 1: Create an S3 Bucket
+
 1. Go to **AWS Console → S3 → Create bucket**  
-2. Name your bucket, e.g. `mywebsite-demo-2025`  
-3. Choose **Region:** `ap-south-1 (Mumbai)`  
+2. Bucket name: `mywebsite-demo-2025`  
+3. Region: `ap-south-1 (Mumbai)`  
 4. **Uncheck** “Block all public access”  
-5. Confirm warning ✅ and click **Create bucket**
+5. Confirm the warning and click **Create bucket**
 
 ---
 
 ### 🧾 Step 2: Upload Website Files
 
-Upload your files:
+Upload these files:
 - `index.html`
 - `style.css`
 - `script.js`
-- Any image files
+- Images (optional)
 
-**Example `index.html`:**
+---
+## 🧩 Example `index.html` File
 
 ```html
 <!DOCTYPE html>
@@ -101,8 +104,15 @@ Upload your files:
 <head>
   <title>My AWS Website</title>
   <style>
-    body { background-color: #f0f0f0; font-family: Arial; text-align: center; padding: 100px; }
-    h1 { color: #0066cc; }
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 100px;
+    }
+    h1 {
+      color: #0066cc;
+    }
   </style>
 </head>
 <body>
@@ -110,6 +120,8 @@ Upload your files:
   <p>This site is hosted using Amazon S3 and CloudFront.</p>
 </body>
 </html>
+---
+
 ⚙️ Step 3: Enable Static Website Hosting
 Go to Bucket → Properties → Static website hosting → Edit
 
@@ -129,7 +141,9 @@ http://mywebsite-demo-2025.s3-website-ap-south-1.amazonaws.com
 ✅ Open this link to test your website.
 
 🔐 Step 4: Set Bucket Policy (Public Access)
-Go to Permissions → Bucket Policy → Edit, then paste:
+Go to Permissions → Bucket Policy → Edit
+
+Paste the following JSON (replace your bucket name):
 
 json
 Copy code
@@ -145,13 +159,12 @@ Copy code
     }
   ]
 }
-Save the policy ✅
+✅ Save the policy.
 
 ⚡ Step 5: Create a CloudFront Distribution (for HTTPS)
 Go to CloudFront → Create Distribution
 
-Origin domain: choose your S3 website endpoint
-(ends with s3-website-ap-south-1.amazonaws.com)
+Origin domain: Choose your S3 website endpoint (ends with s3-website-ap-south-1.amazonaws.com)
 
 Viewer protocol policy: Redirect HTTP → HTTPS
 
@@ -159,37 +172,38 @@ Default root object: index.html
 
 Leave other settings default → Create Distribution
 
-Wait for 10–15 minutes until the status becomes Deployed.
+⏳ Wait 10–15 minutes until Status = Deployed
 
 🌐 Step 6: Access Your Website
-After deployment, access your site at:
+Once deployed, your CloudFront URL will look like:
 
 arduino
 Copy code
 https://d1234abcd.cloudfront.net
-🎉 Congratulations! Your website is now secure, fast, and globally available!
+🎉 Congratulations!
+You now have a secure, fast, and globally available static website.
 
 💻 Other AWS Website Hosting Methods
 Type	Description	AWS Services	Pros	Cons
 Static Website	Only HTML/CSS/JS	S3 + CloudFront	Easy, Free	No backend
 Frontend Hosting	React/Vue/Angular	AWS Amplify	Auto-deploy, HTTPS	Slightly higher cost
-Dynamic Website	Backend apps (PHP, Node.js)	EC2 / Lightsail / Beanstalk	Full control, scalable	Paid
-Serverless	Pay-per-use functions	Lambda + API Gateway + S3	No servers, cheap	Complex
-Containers	Dockerized apps	ECS / EKS	Scalable, modern	Advanced setup
+Dynamic Website	Backend apps (PHP, Node.js)	EC2 / Lightsail / Beanstalk	Full control	Paid
+Serverless	Pay-per-use	Lambda + API Gateway + S3	No servers, cheap	Complex
+Containers	Dockerized apps	ECS / EKS	Scalable	Advanced setup
 Pre-built Apps	WordPress, Joomla	AWS Marketplace	Quick setup	Paid
 
 🧠 You’ll Learn
 By completing this project, you’ll understand:
 
-How to host a static site using Amazon S3
+How to host a static website using Amazon S3
 
-How to add HTTPS and CDN using CloudFront
+How to enable HTTPS and caching using CloudFront
 
-AWS permissions, policies, and website configurations
+AWS permissions, policies, and hosting configuration
 
-The difference between various AWS hosting options
+Differences between various AWS hosting services
 
-📦 Final Architecture Diagram
+📦 Architecture Diagram
 sql
 Copy code
       +--------------------+
@@ -199,8 +213,8 @@ Copy code
                 |
                 ↓
       +--------------------+
-      |       S3 Bucket    |
-      |  (Static Website)  |
+      |     S3 Bucket      |
+      | (Static Website)   |
       +--------------------+
 🧩 Tech Stack
 Frontend: HTML, CSS
@@ -216,3 +230,7 @@ Region: ap-south-1 (Mumbai)
 ✅ HTTPS enabled via CloudFront
 ✅ Completely free under AWS Free Tier
 ✅ Great performance and global reach
+
+<img width="1403" height="345" alt="Screenshot 2025-11-06 091943" src="https://github.com/user-attachments/assets/5e44b7c3-d279-49a6-b36b-d90ea4cf7e18" />
+<img width="1736" height="413" alt="Screenshot 2025-11-06 091733" src="https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3" />
+
