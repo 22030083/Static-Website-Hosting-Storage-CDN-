@@ -75,6 +75,13 @@ https://d1234abcd.cloudfront.net
 
 ---
 
+![Screenshot 2025-11-06 091733](https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3" alt="Screenshot 2025-11-06 091733" width="700">
+</p>
+
+
+
 ## 🧱 Step-by-Step Implementation
 
 ### 🪣 Step 1: Create an S3 Bucket
@@ -231,6 +238,9 @@ Region: ap-south-1 (Mumbai)
 ✅ Completely free under AWS Free Tier
 ✅ Great performance and global reach
 
-<img width="1403" height="345" alt="Screenshot 2025-11-06 091943" src="https://github.com/user-attachments/assets/5e44b7c3-d279-49a6-b36b-d90ea4cf7e18" />
-<img width="1736" height="413" alt="Screenshot 2025-11-06 091733" src="https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3" />
+![Screenshot 2025-11-06 091733](https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3" alt="Screenshot 2025-11-06 091733" width="700">
+</p>
+
 
