@@ -73,13 +73,6 @@ https://d1234abcd.cloudfront.net
 
 💡 **Stay within free tier → No charges for 12 months**
 
----
-
-![Screenshot 2025-11-06 091733](https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3)
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3" alt="Screenshot 2025-11-06 091733" width="700">
-</p>
-
 
 
 ## 🧱 Step-by-Step Implementation
@@ -105,7 +98,7 @@ Upload these files:
 ---
 ## 🧩 Example `index.html` File
 
-```html
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -238,9 +231,5 @@ Region: ap-south-1 (Mumbai)
 ✅ Completely free under AWS Free Tier
 ✅ Great performance and global reach
 
-![Screenshot 2025-11-06 091733](https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3)
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f99ed0f0-996d-4571-88ca-89e61204eab3" alt="Screenshot 2025-11-06 091733" width="700">
-</p>
 
 
